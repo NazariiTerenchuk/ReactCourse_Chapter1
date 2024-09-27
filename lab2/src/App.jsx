@@ -1,34 +1,37 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { useState } from "react";
+import AddToDoComponent from "./assets/components/AddToDoComponent";
+import RemoveToDoComponent from "./assets/components/RemoveToDoComponent";
+import SearchInput from "./assets/components/SearchInput";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const addTodo = (title) => {
+    const newTodo = { id: Date.now(), text: title };
+    setTodos([...todos, newTodo]);
+  };
+
+  const removeTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      <h1>Todo List</h1>
+      <AddToDoComponent onSubmit={addTodo} />
+      <SearchInput searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+      {todos
+        .filter((todo) => todo.text.includes(searchQuery))
+        .map((todo) => (
+          <RemoveToDoComponent
+            key={todo.id}
+            todo={todo}
+            onRemove={removeTodo}
+          />
+        ))}
+    </div>
   );
 }
 

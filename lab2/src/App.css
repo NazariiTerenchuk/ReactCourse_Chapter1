@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -39,4 +41,17 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Додані стилі для вирівнювання Todo List */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Вирівнюємо по вертикалі */
+  align-items: center;    /* Вирівнюємо по горизонталі */
+  justify-content: center; /* Вирівнюємо по вертикалі */
+  height: 100vh;          /* Займаємо висоту вікна */
+}
+
+h1 {
+  margin-bottom: 20px;    /* Додаємо відступ під заголовком */
 }
