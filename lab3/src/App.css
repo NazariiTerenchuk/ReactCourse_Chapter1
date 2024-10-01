@@ -70,3 +70,7 @@ h1 {
   padding: 20px;
 }
 
+.container{
+  flex: auto;
+  justify-content: space-between;
+}

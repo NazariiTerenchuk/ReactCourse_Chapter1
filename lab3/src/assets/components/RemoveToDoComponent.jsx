@@ -2,7 +2,7 @@ import React from "react";
 
 const RemoveToDoComponent = ({ todo, onRemove }) => {
   const handleRemove = () => {
-    onRemove(todo.id); // Викликає функцію видалення з ID завдання
+    onRemove(todo.id);
   };
 
   return (
