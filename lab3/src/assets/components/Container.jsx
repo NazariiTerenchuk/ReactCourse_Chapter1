@@ -19,14 +19,19 @@ function Container() {
   };
 
   return (
-    <ToDoManager
-      todos={todos}
-      addTodo={addTodo}
-      removeTodo={removeTodo}
-      searchQuery={searchQuery}
-      setSearchQuery={setSearchQuery}
-      onSearch={handleSearch}
-    />
+    <div>
+      <AddToDoComponent onSubmit={addTodo} />
+      <SearchInput
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        onSearch={onSearch} // Передайте обробник
+      />
+      <ToDoList
+        todos={todos}
+        removeTodo={removeTodo}
+        searchQuery={searchQuery}
+      />
+    </div>
   );
 }
 
